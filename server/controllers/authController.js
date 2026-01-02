@@ -76,7 +76,7 @@ exports.forgotPassword = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "User not found" });
 
-    const token = process.env.TOKEN;
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {expiresIn: "1h" })
 
     user.resetToken = token;
     user.resetTokenExpiry = Date.now() + 60 * 60 * 1000;
