@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Home.css";
-
+import PhotoUpload from "../PhotoUpload/PhotoUpload";
+import AllPhotos from "../AllPhotos/AllPhotos";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,6 +10,16 @@ const Home = () => {
   const [users, setUsers] = useState([]);
 
   const role = localStorage.getItem("role");
+
+  const [photos, setPhotos] = useState([]);
+
+  const handleAddPhoto = (photoDataUrl) => {
+    setPhotos((prev) => [...prev, photoDataUrl]);
+  };
+
+  const handleRemovePhoto = (index) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
@@ -97,6 +108,20 @@ const Home = () => {
       </nav>
 
       <main className="user-list-container">
+        <PhotoUpload
+          onAddPhoto={handleAddPhoto}
+          handleRemovePhoto={handleRemovePhoto}
+          photos={photos}
+        />
+        <AllPhotos
+          photos={photos.map((photo, index) => ({
+            url: photo,
+            id: index,
+            width: 0,
+            height: 0,
+          }))}
+          onRemovePhoto={handleRemovePhoto}
+        />
         <div className="user-list-header">
           <span className="avatar-header">Avatar</span>
           <span className="name-header">Full Name</span>

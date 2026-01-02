@@ -7,7 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const photoRoutes = require("./routes/photoRoutes");
 
 const app = express();
-const PORT = 5000;
+
 
 app.use(cors());
 app.use(express.json());
@@ -28,4 +28,4 @@ mongoose
   .then(() => console.log("Mongo connected"))
   .catch((err) => console.error(err));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`)); 

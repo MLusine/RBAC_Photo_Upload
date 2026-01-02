@@ -54,16 +54,14 @@ const Register = () => {
       alert("Something went wrong");
     }
   };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setAvatar(file);
     setPreview(URL.createObjectURL(file));
   };
-
   return (
     <div className="form-wrapper">
-        <h1>Complete Your Registration</h1>
+      <h1>Complete Your Registration</h1>
       <form onSubmit={handleSubmit} className="form">
         <div>
           <label htmlFor="avatar">Browse Avatar:</label>

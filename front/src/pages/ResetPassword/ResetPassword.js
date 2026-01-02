@@ -59,10 +59,10 @@ const ResetPassword = () => {
       alert("Something went wrong");
     }
   };
-
+  
   return (
     <div className="form-wrapper">
-        <h1>Reset Your Password</h1>
+      <h1>Reset Your Password</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="email">Email:</label>
