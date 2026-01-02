@@ -41,7 +41,6 @@ router.post("/register/:token", upload.single("avatar"), async (req, res) => {
     const user = await User.findOne({ inviteToken: token, status: "invited" });
 
     if (!user) {
-      console.log("User not found for token:", token);
       return res.status(400).json({ message: "Invalid or expired token" });
     }
 
@@ -60,7 +59,7 @@ router.post("/register/:token", upload.single("avatar"), async (req, res) => {
 
     res.json({ message: "Registration complete" });
   } catch (err) {
-    console.error("Error saving user:", err);
+
     res.status(500).json({ message: "Error saving user" });
   }
 });
@@ -95,7 +94,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
     res.json({ message: "User deleted successfully" });
   } catch (err) {
-    console.error("Delete error:", err);
+
     res.status(500).json({ message: "Server error" });
   }
 });
