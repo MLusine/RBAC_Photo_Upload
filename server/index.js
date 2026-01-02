@@ -27,7 +27,7 @@ app.use("/api/photos", photoRoutes);
 
 const frontPath = path.resolve(__dirname, '../front/build');
 
-app.use(express.static(frontendPath));
+app.use(express.static(frontPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontPath, 'index.html'));
 });
