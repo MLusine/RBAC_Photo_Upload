@@ -19,7 +19,9 @@ router.post("/invite", verifyToken, isAdmin, async (req, res) => {
   if (existing)
     return res.status(400).json({ message: "User already invited or exists" });
 
-  const inviteUrl = `http://localhost:3000/register/${process.env.INVITE_TOKEN}`;
+  const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
+  const inviteUrl = `${BASE_URL}/register/${process.env.INVITE_TOKEN}`;
 
   const user = new User({ email, inviteToken: INVITE_TOKEN, status: "invited" });
   await user.save();

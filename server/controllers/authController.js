@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendInviteEmail, sendResetEmail } = require("../utils/sendEmail");
 
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.login = async (req, res) => {
@@ -81,7 +82,9 @@ exports.forgotPassword = async (req, res) => {
     user.resetTokenExpiry = Date.now() + 60 * 60 * 1000;
     await user.save();
 
-    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+    const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
+    const resetLink = `${BASE_URL}/reset-password?token=${token}`;
     const expiryDate = new Date(user.resetTokenExpiry).toLocaleString();
 
     await sendResetEmail(user.email, token, expiryDate);
@@ -122,3 +125,4 @@ exports.resetPassword = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
