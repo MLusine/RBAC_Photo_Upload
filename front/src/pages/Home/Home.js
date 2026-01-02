@@ -79,6 +79,17 @@ const Home = () => {
   return (
     <section className="wrapper">
       <nav className="navbar">
+      <div>
+          <a
+            className={`button btn `}
+            href="#"
+            
+            target="_self"
+          >
+            About
+          </a>
+        </div>
+
         <div>
           <a
             className={`button btn ${role === "user" ? "disabled" : ""}`}
@@ -108,20 +119,7 @@ const Home = () => {
       </nav>
 
       <main className="user-list-container">
-        <PhotoUpload
-          onAddPhoto={handleAddPhoto}
-          handleRemovePhoto={handleRemovePhoto}
-          photos={photos}
-        />
-        <AllPhotos
-          photos={photos.map((photo, index) => ({
-            url: photo,
-            id: index,
-            width: 0,
-            height: 0,
-          }))}
-          onRemovePhoto={handleRemovePhoto}
-        />
+        <div className="user-list-content">
         <div className="user-list-header">
           <span className="avatar-header">Avatar</span>
           <span className="name-header">Full Name</span>
@@ -161,7 +159,35 @@ const Home = () => {
             </li>
           ))}
         </ul>
+        </div>
+        <PhotoUpload
+          onAddPhoto={handleAddPhoto}
+          handleRemovePhoto={handleRemovePhoto}
+          photos={photos}
+        />
+        <AllPhotos
+          photos={photos.map((photo, index) => ({
+            url: photo,
+            id: index,
+            width: 0,
+            height: 0,
+          }))}
+          onRemovePhoto={handleRemovePhoto}
+        />
+        
       </main>
+      <footer className="footer">
+        <div className="footer-content">
+          <p>Copyright 2026 Photo Gallery. All rights reserved.</p>
+          <p>Contact us: info@photogallery.com</p>
+          <p>Follow us on: Facebook, Instagram, Twitter</p>
+          <p>Privacy Policy: We respect your privacy and protect your data.</p>
+          <p>Terms of Service: By using our service, you agree to our terms of service.</p>
+          <p>Cookie Policy: We use cookies to improve your experience on our site.</p>
+          <p>Security: We take security seriously and protect your data.</p>
+          <p>Cookies: We use cookies to improve your experience on our site.</p>
+        </div>
+      </footer>
     </section>
   );
 };

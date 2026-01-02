@@ -32,9 +32,9 @@
   width: 100%;
 }
 .all-photos__img {
-  max-width: var(--photo-width, 250px);
-  max-height: var(--photo-height, 250px);
-  object-fit: contain;
+  width: var(--photo-width, 250px);
+  height: var(--photo-height, 250px);
+  object-fit: cover;
   border-radius: 4px;
 }
 

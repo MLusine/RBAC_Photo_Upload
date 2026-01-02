@@ -36,9 +36,9 @@
 }
 
 .photo-upload__preview-img {
-  width: 320px;
-  height: 320px;
-  object-fit: contain;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
   border: 1px solid #eee;
   border-radius: 8px;
   background: #fafafa;
@@ -154,7 +154,7 @@
 
 .photo-upload__edit-action-btn {
   padding: 10px 24px;
-  background: #5a00ee;
+  background: #c209c1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -167,7 +167,7 @@
 }
 .photo-upload__edit-action-btn:hover,
 .photo-upload__edit-action-btn:focus {
-  background: #1251a3;
+  background: #e983e9;
   outline: none;
 }
 
