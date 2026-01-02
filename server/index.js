@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const photoRoutes = require("./routes/photoRoutes");
+const path = require("path")
 
 const app = express();
 
@@ -12,15 +13,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/photos", photoRoutes);
 
-app.use((req, res, next) => {
-  
-  next();
+const frontPath = path.resolve(__dirname, '../front/build');
+
+app.use(express.static(frontendPath));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontPath, 'index.html'));
 });
 
 mongoose
