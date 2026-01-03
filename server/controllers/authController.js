@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-
+console.log("email", email, password)
   const user = await User.findOne({ email });
   if (!user || !user.password)
     return res.status(401).json({ message: "Invalid credentials" });

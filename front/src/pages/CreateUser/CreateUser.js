@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const CreateUser = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -8,7 +10,7 @@ const CreateUser = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/users/invite", {
+      const res = await fetch(`${API_URL}/api/users/invite`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

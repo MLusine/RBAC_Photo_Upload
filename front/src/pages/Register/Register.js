@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL
+
 const Register = () => {
   const navigate = useNavigate();
   const { token } = useParams();
@@ -34,7 +36,7 @@ const Register = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/users/register/${token}`,
+        `${API_URL}/api/users/register/${token}`,
         {
           method: "POST",
           body: formData,

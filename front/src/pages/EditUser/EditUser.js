@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL
+
 const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -39,7 +41,7 @@ const EditUser = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const res = await fetch(`${API_URL}/api/users/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
