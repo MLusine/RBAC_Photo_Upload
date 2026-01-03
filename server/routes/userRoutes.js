@@ -12,7 +12,6 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/photos/" });
 const User = require("../models/user");
 
-console.log(" Loading userRoutes");
 
 
 router.post("/invite", verifyToken, isAdmin, async (req, res) => {
@@ -35,7 +34,7 @@ router.post("/invite", verifyToken, isAdmin, async (req, res) => {
   });
 });
 
-router.post("/register/:token", upload.single("avatar"), async (req, res) => {
+router.post("/register/:token", async (req, res) => {
   const { token } = req.params;
   const { password, name, surname, phone } = req.body;
   const avatar = req.file ? req.file.path : null;
