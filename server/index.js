@@ -31,12 +31,16 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/photos", photoRoutes);
 
-const frontPath = path.resolve(__dirname, '../front/build');
+const frontPath = path.join(__dirname, "../front/build");
 
-app.use(express.static(frontPath));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontPath, 'index.html'));
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(frontPath));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(frontPath, "index.html"));
+  });
+}
+
 
 mongoose
   .connect(process.env.MONGO_URI)
