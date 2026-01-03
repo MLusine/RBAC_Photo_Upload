@@ -12,6 +12,9 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/photos/" });
 const User = require("../models/user");
 
+console.log(" Loading userRoutes");
+
+
 router.post("/invite", verifyToken, isAdmin, async (req, res) => {
   const { email } = req.body;
 

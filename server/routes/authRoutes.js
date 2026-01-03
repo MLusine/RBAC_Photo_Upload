@@ -15,6 +15,8 @@ const {
 
 const router = express.Router();
 
+console.log(" Loading authRoutes");
+
 router.post("/login", login);
 router.post("/invite", verifyToken, isAdmin, sendInvite);
 router.post("/register/:token", register);

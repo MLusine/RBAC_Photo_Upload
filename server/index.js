@@ -10,6 +10,12 @@ const path = require("path")
 const app = express();
 
 
+const originalUse = app.use;
+app.use = function (path, ...handlers) {
+  console.log(" app.use registering path:", path);
+  return originalUse.call(this, path, ...handlers);
+};
+
 app.use(cors());
 app.use(express.json());
 
