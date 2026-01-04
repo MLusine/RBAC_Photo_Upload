@@ -12,7 +12,7 @@ function App() {
    
   return (
     <>
-    <Hotjar />
+    {/* <Hotjar /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
