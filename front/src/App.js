@@ -6,11 +6,13 @@ import Register from "./pages/Register/Register";
 import EditUser from "./pages/EditUser/EditUser";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
+import Hotjar from "./pages/Hotjar";
 
 function App() {
    
   return (
     <>
+    <Hotjar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
