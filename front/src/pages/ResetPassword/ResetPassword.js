@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
+
+const API_URL = process.env.REACT_APP_API_URL
+
 const ResetPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,7 +41,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/reset-password`, {
+      const res = await fetch(`${API_URL}/api/auth/reset-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -59,7 +62,7 @@ const ResetPassword = () => {
       alert("Something went wrong");
     }
   };
-  
+
   return (
     <div className="form-wrapper">
       <h1>Reset Your Password</h1>

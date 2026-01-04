@@ -60,7 +60,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const res = await fetch("http://localhost:5000/api/users/all", {
+      const res = await fetch(`${API_URL}/api/users/all`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
